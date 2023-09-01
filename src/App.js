@@ -46,52 +46,43 @@ function App() {
     const gic = doGic;
     const gicFee = gicFeeInputRef.current.value;
 
-    const updatedMail = email.replace('@', '').replace('.','');
-
-    const allDetails = {
-      email,
-      name,
-      age,
-      education,
-      institute,
-      study,
-      experience,
-      canadaInstitute,
-      program,
-      country,
-      goals,
-      listening,
-      reading,
-      speaking,
-      writing,
-      tution,
-      tutionFee,
-      gic,
-      gicFee,
+    const config = {
+      SecureToken: "a9f4f8e0-6c5a-4dbf-aaf5-38b3c19c16eb",
+      To: `${email}`,
+      From: "nagendravarmal512@gmail.com",
+      Subject: "Response of the Form",
+      Body: `Email: ${email},
+      Name: ${name},
+      Age: ${age}, 
+      Education: ${education}, 
+      Institute: ${institute}, 
+      Study: ${study}, 
+      Experience: ${experience}, 
+      Institute Name in Canada: ${canadaInstitute}, 
+      Program Name: ${program}, 
+      Your Country: ${country}, 
+      Future goals: ${goals}, 
+      English Listening - score: ${listening}, 
+      English Reading - score: ${reading}, 
+      English Speaking - score: ${speaking}, 
+      English Writing - score: ${writing}, 
+      Did you pay your first year tution: ${tution}, 
+      Paid tution fee: ${tutionFee}, 
+      Did you do a GIC: ${gic}, 
+      Paid GIC fee: ${gicFee},`,
     };
-    console.log(allDetails)
+    console.log(config);
+    if (window.Email) {
+      window.Email.send(config).then(() =>
+        alert(
+          "Form Submitted Sucsessfully and please check your mail for the response"
+        )
+      );
+    }
 
-    fetch(`https://placement-project-e853c-default-rtdb.firebaseio.com/${updatedMail}.json`, {
-      method: 'POST',
-      body: JSON.stringify(allDetails),
-      headers: {
-        "Content-Type": 'application.json'
-      }
-    }).then((res) => {
-      if(res.ok) {
-        return res.json()
-      }
-      else {
-        return res.json().then((err) => {
-          throw new Error('Failed to Store data');
-        })
-      }
-    }).then((data) => {
-      console.log(data)
-    }).catch((err) => alert(err.message))
-
-    formClearHandler()
+    formClearHandler();
   };
+
   const formClearHandler = () => {
     nameInputRef.current.value = null;
     emailInputRef.current.value = null;
@@ -113,9 +104,19 @@ function App() {
     setDoGic(null);
     gicFeeInputRef.current.value = null;
   };
+
   return (
-    <div style={{ backgroundColor: "#DAF1FE", width: "100%", height: "100%", paddingTop: '20px' }}>
-      <div className={classes.header}><h1>EFFIZIENT</h1></div>
+    <div
+      style={{
+        backgroundColor: "#DAF1FE",
+        width: "100%",
+        height: "100%",
+        paddingTop: "20px",
+      }}
+    >
+      <div className={classes.header}>
+        <h1>EFFIZIENT</h1>
+      </div>
       <div className={classes.container}>
         <div style={{ padding: "20px" }}>
           <h1>Customized SOP Generator</h1>
@@ -293,7 +294,7 @@ function App() {
             <span style={{ color: "red" }}>*</span>
           </Form.Label>
           <Form.Control
-          className="m-2"
+            className="m-2"
             type="text"
             placeholder="your answer"
             ref={goalsInputRef}
