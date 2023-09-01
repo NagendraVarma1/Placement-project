@@ -1,0 +1,41 @@
+.container {
+    width: 40%;
+    margin-left: 30%;
+    padding-top: 5px;
+    border: 1px solid rgba(0, 0, 0,20%);
+    border-radius: 10px;
+    border-top: 10px solid #05A0FA;
+    background-color: white;
+}
+
+.header {
+    width: 40%;
+    margin-left: 30%;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0, 0, 0,20%);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.header h1{
+    margin: 30px 0;
+    font-weight: bolder;
+}
+
+.form {
+    width: 40%;
+    margin-left: 30%;
+    margin-top: 15px;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 20%);
+    border-radius: 10px;
+    background-color: white;
+}
+
+.btn {
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+    margin: 15px 30%;
+    
+}
