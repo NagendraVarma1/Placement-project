@@ -15,11 +15,18 @@
     border: 1px solid rgba(0, 0, 0,20%);
     border-radius: 10px;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(105, 200, 105);
 }
 
 .header h1{
     margin: 30px 0;
     font-weight: bolder;
+}
+
+.header svg{
+    margin: 30px 0;
 }
 
 .form {
@@ -37,5 +44,6 @@
     justify-content: space-between;
     width: 40%;
     margin: 15px 30%;
+    padding-bottom: 20px;
     
 }
